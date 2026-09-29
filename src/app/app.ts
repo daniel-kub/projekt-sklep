@@ -8,7 +8,7 @@ import { ProductList } from './product-list/product-list';
   imports: [ProductList],
 })
 export class App {
-  products = [
+  products:any = [
 { id: 1, name: 'Klawiatura', price: 199 },
 { id: 2, name: 'Mysz', price: 99 },
 { id: 3, name: 'Monitor', price: 899 },

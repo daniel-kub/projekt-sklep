@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import {App} from '../app';
+import { Component, input} from '@angular/core';
 import {ProductItem} from '../product-item/product-item';
 @Component({
   imports: [ProductItem,],
@@ -8,5 +7,5 @@ import {ProductItem} from '../product-item/product-item';
   templateUrl: './product-list.html',
 })
 export class ProductList {
-  products = input<{ id: number; name: string; price: number }[]>();
+  products = input<any>();
 }
