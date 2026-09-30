@@ -1,13 +1,21 @@
 import { Component} from '@angular/core';
 import { ProductList } from './product-list/product-list';
+import { Router, RouterOutlet, RouterLink} from '@angular/router';
+import { Cart } from './cart/cart';
 
 @Component({
   selector: 'app-root',
   styleUrl: './app.scss',
-  template:'<app-product-list [products]="products" (addToCart)="onAddToCart($event)"></app-product-list>',
-  imports: [ProductList],
+  templateUrl: './app.html',
+  imports: [ProductList, RouterLink, Cart],
 })
 export class App {
+  url: string;
+
+  constructor(private router: Router) {
+    this.url = this.router.url;
+  }
+
   products:any = [
 { id: 1, name: 'Klawiatura', price: 199 },
 { id: 2, name: 'Mysz', price: 99 },

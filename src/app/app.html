@@ -1,0 +1,18 @@
+<nav>
+  <a routerLink="/">Strona główna</a>
+  <a routerLink="/cart">Koszyk</a>
+</nav>
+
+@if (router.url === '/') {
+  <app-product-list
+    [products]="products"
+    (addToCart)="onAddToCart($event)">
+  </app-product-list>
+}
+
+@if (router.url === '/cart') {
+  <app-cart
+    [cartItems]="insideCart"
+    [products]="products">
+  </app-cart>
+}

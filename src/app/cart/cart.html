@@ -1,1 +1,29 @@
-<p>cart works!</p>
+@if (cartLength === 0) {
+  <p class="cart-empty">Koszyk jest pusty.</p>
+} @else {
+  <div class="cart">
+    @for (item of cartItems(); track item.id) {
+      @let product = products()?.find(p => p.id === item.id);
+      @let unitPrice = product?.price ?? 0;
+
+      <div class="cart-item">
+        <h3 class="cart-item__name">{{ product?.name }}</h3>
+
+        <div class="cart-item__details">
+          <span class="cart-item__qty">
+            Ilość: <strong>{{ item.pieces }}</strong>
+          </span>
+          <span class="cart-item__price">
+            Cena: <strong>{{ unitPrice }} PLN</strong>
+          </span>
+        </div>
+
+        <p class="cart-item__total">
+          Suma: <strong>{{ unitPrice * item.pieces }} PLN</strong>
+        </p>
+      </div>
+    }
+    <p class="cart-total">Razem: {{ getCartTotal() }} zł</p>
+  </div>
+}
+
