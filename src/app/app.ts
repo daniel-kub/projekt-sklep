@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { ProductList } from './product-list/product-list';
-import { Router, RouterOutlet, RouterLink} from '@angular/router';
+import { Router, RouterLink} from '@angular/router';
 import { Cart } from './cart/cart';
 
 @Component({
@@ -23,6 +23,7 @@ export class App {
 { id: 4, name: 'Słuchawki', price: 149 }
 ];
 insideCart:any[] = [];
+
 onAddToCart(product: any) {
   const existingProduct = this.insideCart.find(
     (item: any) => item.id === product.id
@@ -41,6 +42,9 @@ onAddToCart(product: any) {
 
   console.log('Produkt dodany do koszyka:', product);
   console.log('Zawartość koszyka:', this.insideCart);
+}
+onRemoveFromCart($event: any) {
+  this.insideCart = this.insideCart.filter((item: any) => item.id !== $event.id);
 }
 
 }

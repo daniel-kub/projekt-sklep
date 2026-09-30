@@ -13,6 +13,9 @@
 @if (router.url === '/cart') {
   <app-cart
     [cartItems]="insideCart"
-    [products]="products">
+    [products]="products"
+    (removeItem)="onRemoveFromCart($event)"
+    >
+    
   </app-cart>
 }
