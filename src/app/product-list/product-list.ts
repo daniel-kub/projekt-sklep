@@ -1,4 +1,4 @@
-import { Component, input} from '@angular/core';
+import { Component, input, output} from '@angular/core';
 import {ProductItem} from '../product-item/product-item';
 @Component({
   imports: [ProductItem,],
@@ -8,4 +8,8 @@ import {ProductItem} from '../product-item/product-item';
 })
 export class ProductList {
   products = input<any>();
+  addToCart = output<{ id: number; name: string; price: number }>();
+  onItemAdded(product: { id: number; name: string; price: number }) {
+    this.addToCart.emit(product);
+  }
 }
