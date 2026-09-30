@@ -2,29 +2,29 @@
   <p class="cart-empty">Koszyk jest pusty.</p>
 } @else {
   <div class="cart">
-    @for (item of cartItems(); track item.id) {
-      @let product = products()?.find(p => p.id === item.id);
-      @let unitPrice = product?.price ?? 0;
+  @for (item of cartItems(); track item.id) {
+    @let product = products()?.find(p => p.id === item.id);
+    @let unitPrice = product?.price ?? 0;
 
-      <div class="cart-item">
-        <h3 class="cart-item__name">{{ product?.name }}</h3>
+    <mat-card class="cart-item" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>{{ product?.name }}</mat-card-title>
+        <mat-card-subtitle>Cena: {{ unitPrice }} PLN</mat-card-subtitle>
+      </mat-card-header>
 
-        <div class="cart-item__details">
-          <span class="cart-item__qty">
-            Ilość: <strong>{{ item.pieces }}</strong>
-          </span>
-          <span class="cart-item__price">
-            Cena: <strong>{{ unitPrice }} PLN</strong>
-          </span>
-          <button (click)="removeItemFromCart(item)">Usuń</button>
-        </div>
+      <mat-card-content class="cart-item__content">
+        <span>Ilość: <strong>{{ item.pieces }}</strong></span>
+        <span>Suma: <strong>{{ unitPrice * item.pieces }} PLN</strong></span>
+      </mat-card-content>
 
-        <p class="cart-item__total">
-          Suma: <strong>{{ unitPrice * item.pieces }} PLN</strong>
-        </p>
-      </div>
-    }
+      <mat-card-actions align="end">
+        <button matButton="filled" (click)="removeItemFromCart(item)">Usuń</button>
+      </mat-card-actions>
+    </mat-card>
+  }
     <p class="cart-total">Razem: {{ getCartTotal() }} zł</p>
-  </div>
+</div>
+    
+
 }
 

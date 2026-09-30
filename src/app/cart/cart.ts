@@ -1,8 +1,10 @@
 import { Component, output } from '@angular/core';
 import { input } from '@angular/core';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
-  imports: [],
+  imports: [MatButtonModule, MatCardModule],
   selector: 'app-cart',
   styleUrl: './cart.scss',
   templateUrl: './cart.html',

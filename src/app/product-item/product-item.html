@@ -1,5 +1,9 @@
-<div>
-    <h2>{{name()}}</h2>
-    <p>Cena: {{price()}} zł</p>
-    <button (click)="onAddToCart()"`>Dodaj do koszyka</button>
-</div>
+<mat-card>
+    <mat-card-title>{{name()}}</mat-card-title>
+    <mat-card-content>
+        <p>Cena: {{price()}} zł</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button matButton="filled" (click)="onAddToCart()"`>Dodaj do koszyka</button>
+    </mat-card-actions>
+</mat-card>

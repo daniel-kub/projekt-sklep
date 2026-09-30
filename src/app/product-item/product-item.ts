@@ -1,7 +1,8 @@
 import { Component,input,output } from '@angular/core';
-
+import {MatAnchor } from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 @Component({
-  imports: [],
+  imports: [MatAnchor, MatCardModule],
   selector: 'app-product-item',
   styleUrl: './product-item.scss',
   templateUrl: './product-item.html',
