@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { ProductList } from './product-list/product-list';
-import { Router, RouterLink} from '@angular/router';
+import { Router} from '@angular/router';
 import { Cart } from './cart/cart';
 import {MatTabsModule} from '@angular/material/tabs';
 
@@ -9,7 +9,7 @@ import {MatTabsModule} from '@angular/material/tabs';
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
-  imports: [ProductList, RouterLink, Cart, MatTabsModule],
+  imports: [ProductList, Cart, MatTabsModule],
 })
 export class App {
   url: string;
