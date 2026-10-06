@@ -1,17 +1,26 @@
-<mat-tab-group>
-  <mat-tab label="Zawartość sklepu"> <app-product-list
-    [products]="products"
-    (addToCart)="onAddToCart($event)">
-  </app-product-list>
-</mat-tab>
-  <mat-tab label="Koszyk">
-  <ng-template matTabContent>
-    <app-cart
-      [cartItems]="insideCart"
-      [products]="products"
-      (removeItem)="onRemoveFromCart($event)">
-    </app-cart>
-  </ng-template>
-</mat-tab>
-</mat-tab-group>
 
+<nav mat-tab-nav-bar mat-stretch-tabs [tabPanel]="tabPanel">
+  <a
+    mat-tab-link
+    routerLink="/"
+    routerLinkActive
+    #home="routerLinkActive"
+    [active]="home.isActive"
+  >
+    Zawartość sklepu
+  </a>
+
+  <a
+    mat-tab-link
+    routerLink="/cart"
+    routerLinkActive
+    #cart="routerLinkActive"
+    [active]="cart.isActive"
+  >
+    Koszyk
+  </a>
+</nav>
+
+<mat-tab-nav-panel #tabPanel>
+  <router-outlet />
+</mat-tab-nav-panel>

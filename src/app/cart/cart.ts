@@ -1,5 +1,5 @@
-import { Component, output } from '@angular/core';
-import { input } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AppService } from '../app.service';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 
@@ -10,19 +10,14 @@ import {MatCardModule} from '@angular/material/card';
   templateUrl: './cart.html',
 })
 export class Cart {
-  cartItems = input<any[]>();
-  products = input<any[]>();
-  cartLength = this.cartItems()?.length;
-  getCartTotal(): number {
-    return this.cartItems()?.reduce((total, item) => {
-      const product = this.products()?.find(p => p.id === item.id);
+  private appService = inject(AppService);
+  cartItems = this.appService.cartItems;
+  products = this.appService.products;
 
-      return total + (product?.price ?? 0) * item.pieces;
-    }, 0) ?? 0;
-  }
-  removeItem = output<any>();
+  get cartLength() { return this.appService.cartLength(); }
+  getCartTotal() { return this.appService.cartTotal(); }
+
   removeItemFromCart(item: any) {
-    this.removeItem.emit(item);
+    this.appService.remove(item);
   }
 }
-
