@@ -9,3 +9,7 @@ mat-card {
     margin-top: 20px;
   }
 }
+mat-card-actions {
+    display: flex;
+    gap: 10px;
+}

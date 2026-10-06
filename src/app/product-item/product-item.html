@@ -5,5 +5,6 @@
     </mat-card-content>
     <mat-card-actions>
         <button matButton="filled" (click)="onAddToCart()"`>Dodaj do koszyka</button>
+        <button matButton="outlined" [routerLink]="['/product', id()]">Więcej o produkcie</button>
     </mat-card-actions>
 </mat-card>

@@ -1,1 +1,7 @@
-<p>product-info works!</p>
+@if(p==null) {
+  <p>Nie znaleziono produktu</p>
+} @else {
+  <h1>Produkt {{p.name}}</h1>
+  <p>Cena: {{p.price}}</p>
+  <button matButton="filled" (click)="onAddToCart()">Dodaj do koszyka</button>
+} 
