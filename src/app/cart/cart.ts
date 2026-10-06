@@ -2,9 +2,10 @@ import { Component, inject } from '@angular/core';
 import { AppService } from '../app.service';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [MatButtonModule, MatCardModule],
+  imports: [MatButtonModule, MatCardModule, RouterLink],
   selector: 'app-cart',
   styleUrl: './cart.scss',
   templateUrl: './cart.html',

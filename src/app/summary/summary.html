@@ -1,1 +1,65 @@
-<p>summary works!</p>
+<form [formGroup]="orderForm" (ngSubmit)="pay()">
+  <h2>Formularz zamówienia (Angular)</h2>
+
+  <div>
+    <label for="firstName">Imię:</label><br>
+    <input id="firstName" formControlName="firstName">
+    
+    @if (orderForm.get('firstName')?.touched && orderForm.get('firstName')?.invalid) {
+      <small style="color: red;">Imię jest wymagane.</small>
+    }
+  </div>
+
+  <div>
+    <label for="lastName">Nazwisko:</label><br>
+    <input id="lastName" formControlName="lastName">
+    
+    @if (orderForm.get('lastName')?.touched && orderForm.get('lastName')?.invalid) {
+      <small style="color: red;">Nazwisko jest wymagane.</small>
+    }
+  </div>
+
+  <div>
+    <label for="email">E-mail:</label><br>
+    <input id="email" type="email" formControlName="email">
+    
+    @if (orderForm.get('email')?.touched && orderForm.get('email')?.invalid) {
+      <small style="color: red;">Wprowadź poprawny adres e-mail.</small>
+    }
+  </div>
+
+  <div>
+    <label for="phone">Telefon:</label><br>
+    <input id="phone" type="tel" formControlName="phone">
+    
+    @if (orderForm.get('phone')?.touched && orderForm.get('phone')?.invalid) {
+      <small style="color: red;">Wprowadź poprawny numer telefonu (min. 9 cyfr).</small>
+    }
+  </div>
+
+  <fieldset>
+    <legend>Adres zamieszkania</legend>
+    
+    <div>
+      <label for="street">Ulica i nr domu:</label><br>
+      <input id="street" formControlName="street">
+    </div>
+
+    <div>
+      <label for="zipCode">Kod pocztowy:</label><br>
+      <input id="zipCode" placeholder="00-000" formControlName="zipCode">
+      
+      @if (orderForm.get('zipCode')?.touched && orderForm.get('zipCode')?.invalid) {
+        <small style="color: red;">Kod musi mieć format 00-000.</small>
+      }
+    </div>
+
+    <div>
+      <label for="city">Miejscowość:</label><br>
+      <input id="city" formControlName="city">
+    </div>
+  </fieldset>
+
+  <br>
+  <button type="submit" [disabled]="orderForm.invalid">Zapłać</button>
+</form>

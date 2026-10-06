@@ -10,4 +10,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./product-info/product-info').then(m => m.ProductInfo),
   },
+  {path:'summary', loadComponent: () => import('./summary/summary').then(m => m.Summary)},
+  {path:'anulowano', loadComponent: () => import('./anulowano/anulowano').then(m => m.Anulowano)},
+  {path:'sukces', loadComponent: () => import('./sukces/sukces').then(m => m.Sukces)},
 ];
