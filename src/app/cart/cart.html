@@ -18,8 +18,15 @@
       </mat-card-content>
 
       <mat-card-actions>
-        <button matButton="filled" (click)="removeItemFromCart(item)">Usuń</button>
+        <button matButton="outlined" (click)="increaseItemQuantity(item.id)">
+          <mat-icon>add</mat-icon>
+        </button>
+        <button matButton="outlined" (click)="decreaseItemQuantity(item.id)">
+          <mat-icon>remove</mat-icon>
+        </button>
       </mat-card-actions>
+        <button matButton="filled" (click)="removeItemFromCart(item)">Usuń</button>
+
     </mat-card>
   }
     <p class="cart-total">Razem: {{ getCartTotal() }} zł</p>

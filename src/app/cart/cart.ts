@@ -3,9 +3,11 @@ import { AppService } from '../app.service';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { RouterLink } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @Component({
-  imports: [MatButtonModule, MatCardModule, RouterLink],
+  imports: [MatButtonModule, MatCardModule, RouterLink, MatIconModule],
   selector: 'app-cart',
   styleUrl: './cart.scss',
   templateUrl: './cart.html',
@@ -30,5 +32,11 @@ export class Cart {
 
   removeItemFromCart(item: any) {
     this.appService.remove(item);
+  }
+  increaseItemQuantity(item: any) {
+    this.appService.more(item);
+  }
+  decreaseItemQuantity(item: any) {
+    this.appService.less(item);
   }
 }

@@ -6,7 +6,7 @@ import { environment } from '../enviroments/enviroments';
 export class PaymentService {
   private http = inject(HttpClient);
 
-  createCheckoutSession(kwota:number) {
+  createCheckoutSession(kwota:number, email:string) {
     const body = new HttpParams()
       .set('mode', 'payment')
       .set('line_items[0][price_data][currency]', 'pln')
@@ -14,7 +14,8 @@ export class PaymentService {
       .set('line_items[0][price_data][unit_amount]', (kwota * 100).toString())
       .set('line_items[0][quantity]', '1')
       .set('success_url', 'http://localhost:4200/sukces')
-      .set('cancel_url', 'http://localhost:4200/anulowano');
+      .set('cancel_url', 'http://localhost:4200/anulowano')
+      .set('customer_email', email);;
 
     return this.http.post<{ url: string }>(
       'https://api.stripe.com/v1/checkout/sessions',

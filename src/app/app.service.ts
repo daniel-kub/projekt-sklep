@@ -173,4 +173,22 @@ products = signal<any[]>([
   remove(item: any) {
     this.cartItems.update(items => items.filter(i => i.id !== item.id));
   }
+  more(item: number) {
+  this.cartItems.update(items =>
+    items.map(i =>
+      i.id === item ? { ...i, pieces: i.pieces + 1 } : i
+    )
+  );
+}
+
+less(item: number) {
+  this.cartItems.update(items =>
+    items
+      .map(i =>
+        i.id === item ? { ...i, pieces: i.pieces - 1 } : i
+      )
+      .filter(i => i.pieces > 0)
+  );
+}
+  
 }

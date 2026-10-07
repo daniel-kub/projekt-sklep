@@ -3,16 +3,17 @@ import { AppService } from '../app.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PaymentService } from '../payment.service';
 import {MatInputModule} from '@angular/material/input';
+import { MatFormField } from '@angular/material/input';
+import { MatAnchor } from '@angular/material/button';
 
 @Component({
-  imports: [ReactiveFormsModule, MatInputModule],
+  imports: [ReactiveFormsModule, MatInputModule, MatFormField, MatAnchor],
   selector: 'app-summary',
   styleUrl: './summary.scss',
   templateUrl: './summary.html',
 })
 export class Summary {
     orderForm!: FormGroup;
-
   constructor(private appService: AppService, private fb: FormBuilder) {}
   ngOnInit() {
     this.orderForm = this.fb.group({
@@ -37,7 +38,7 @@ export class Summary {
   pay() {
     this.loading.set(true);
     this.error.set(null);
-    this.payments.createCheckoutSession(this.appService.cartTotal()).subscribe({
+    this.payments.createCheckoutSession(this.appService.cartTotal(), this.orderForm.value.email).subscribe({
       next: ({ url }) => {
         window.location.href = url;
       },
