@@ -1,10 +1,11 @@
 import { Component,inject,signal } from '@angular/core';
 import { AppService } from '../app.service';
-import { FormBuilder, FormGroup, Validator, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PaymentService } from '../payment.service';
+import {MatInputModule} from '@angular/material/input';
 
 @Component({
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MatInputModule],
   selector: 'app-summary',
   styleUrl: './summary.scss',
   templateUrl: './summary.html',

@@ -14,7 +14,17 @@ export class Cart {
   private appService = inject(AppService);
   cartItems = this.appService.cartItems;
   products = this.appService.products;
-
+  isCardActive = false;
+  ngOnInit() {
+    if(location.pathname === '/cart') {
+      console.log('Cart page loaded');
+      this.isCardActive = true;
+    }
+    else{
+      console.log('Cart component loaded');
+      this.isCardActive = false;
+    }
+  }
   get cartLength() { return this.appService.cartLength(); }
   getCartTotal() { return this.appService.cartTotal(); }
 

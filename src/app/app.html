@@ -1,26 +1,18 @@
+<nav>
+  <button mat-button="inline" [routerLink]="['/']">Home</button>
+  
+  <div class="cart-container">
+    <button mat-button="inline" (click)="showCart()">Koszyk</button>
 
-<nav mat-tab-nav-bar mat-stretch-tabs [tabPanel]="tabPanel">
-  <a
-    mat-tab-link
-    routerLink="/"
-    routerLinkActive
-    #home="routerLinkActive"
-    [active]="home.isActive"
-  >
-    Zawartość sklepu
-  </a>
-
-  <a
-    mat-tab-link
-    routerLink="/cart"
-    routerLinkActive
-    #cart="routerLinkActive"
-    [active]="cart.isActive"
-  >
-    Koszyk
-  </a>
+    @if(isCardActive) {
+      <div id="showCard">
+        <app-cart></app-cart>
+        <button mat-button="inline" (click)="isCardActive = false" [routerLink]="['/cart']">Pokaż więcej</button>
+      </div>
+    }
+  </div>
 </nav>
 
-<mat-tab-nav-panel #tabPanel>
-  <router-outlet />
-</mat-tab-nav-panel>
+<div id="main">
+  <router-outlet></router-outlet>
+</div>

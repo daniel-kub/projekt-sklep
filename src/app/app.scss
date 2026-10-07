@@ -1,76 +1,52 @@
-// Zmienne
-$nav-bg: #1f2937;
-$nav-link-color: #d1d5db;
-$nav-link-hover: #ffffff;
-$nav-accent: #3b82f6;
-$nav-height: 56px;
-$nav-gap: 8px;
-$transition: 0.2s ease;
-
 nav {
   display: flex;
   align-items: center;
-  gap: $nav-gap;
-  height: $nav-height;
+  justify-content: space-between;
   padding: 0 24px;
-  background-color: $nav-bg;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  height: 56px;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
 
-  a {
-    position: relative;
-    padding: 8px 16px;
-    color: $nav-link-color;
-    font-weight: 500;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: color $transition, background-color $transition;
 
-    // Podkreślenie animowane
-    &::after {
-      content: '';
-      position: absolute;
-      left: 16px;
-      right: 16px;
-      bottom: 4px;
-      height: 2px;
-      background-color: $nav-accent;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform $transition;
-    }
+.cart-container {
+  position: relative;
+}
 
-    &:hover {
-      color: $nav-link-hover;
-      background-color: rgba(255, 255, 255, 0.08);
-
-      &::after {
-        transform: scaleX(1);
-      }
-    }
-
-    &:focus-visible {
-      outline: 2px solid $nav-accent;
-      outline-offset: 2px;
-    }
-
-    // Aktywny link (klasa dodawana przez routerLinkActive)
-    &.active {
-      color: $nav-link-hover;
-
-      &::after {
-        transform: scaleX(1);
-      }
-    }
+#showCard {
+  position: absolute;
+  top: 100%;          
+  right: 0;           
+  width: 450px;
+  max-width: 90vw;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-top: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  padding: 16px;
+  box-sizing: border-box;
+  animation: cartFadeIn 0.15s ease-out;
+  button{  
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0;
+  font-weight: 600;
+  width: 100%;
   }
+}
 
-  // Mobile
-  @media (max-width: 480px) {
-    padding: 0 12px;
-    gap: 4px;
-
-    a {
-      padding: 8px 10px;
-      font-size: 0.9rem;
-    }
+@keyframes cartFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

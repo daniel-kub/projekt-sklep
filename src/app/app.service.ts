@@ -147,7 +147,7 @@ products = signal<any[]>([
 ]);
 
 
-
+  isCartOpen = signal(false);
   cartItems = signal<any[]>([]);
   cartLength = computed(() => this.cartItems().length);
   

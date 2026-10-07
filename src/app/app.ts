@@ -1,11 +1,28 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { MatTabsModule } from '@angular/material/tabs';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { Cart } from './cart/cart';
+import { MatCardModule } from '@angular/material/card';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
-  styleUrl: './app.scss',
   templateUrl: './app.html',
-  imports: [MatTabsModule, RouterOutlet, RouterLink, RouterLinkActive],
+  styleUrl: './app.scss',
+  imports: [RouterLink, RouterOutlet, MatButtonModule, Cart, MatCardModule],
 })
-export class App {}
+export class App {
+  private appService = new AppService();
+  isCardActive = false;
+
+  showCart() {
+    if(this.isCardActive) {
+      this.isCardActive = false;
+      this.appService.isCartOpen.set(true);
+    }
+    else {
+      this.isCardActive = true;
+      this.appService.isCartOpen.set(false);
+    }
+  }
+}

@@ -23,7 +23,10 @@
     </mat-card>
   }
     <p class="cart-total">Razem: {{ getCartTotal() }} zł</p>
-    <button matButton="filled"  [routerLink]="['/summary']" type="button">Przejdź do podsumowania</button>
+    @if(isCardActive) {
+      <button matButton="filled"  [routerLink]="['/summary']" type="button">Przejdź do podsumowania</button>
+    }
+    
 </div>
     
 
